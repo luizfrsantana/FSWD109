@@ -11,7 +11,10 @@ print(format_string("Luiz",33))
 breakLine()
 # 12 **Dictionary Manipulation:** -  Write a Python code to remove the key-value pair where the key is 'age' from a dictionary `person`.
 person = {'name':'Luiz','age':33,'city':'Rio'}
-person.pop('age')
+x = person.pop('age') #1-Option
+print(person)
+print(x)
+del person['city'] #2-Option
 print(person)
 
 breakLine()
@@ -27,7 +30,10 @@ string = 'word'
 for value in range(len(string)):
     print(f'Index #{value} letter {string[value]}')
 breakLine()
-    
+for index,character in enumerate(string):
+    print(f'Index #{index} letter {character}')
+breakLine()
+   
 #15. **Function with Variable Arguments:**
 def average(*args):
     return sum(args) / len(args)
