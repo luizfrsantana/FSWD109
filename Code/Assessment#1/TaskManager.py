@@ -14,18 +14,20 @@ class TaskManager():
     #List the attributes of the objects in the dictionary.
     def ViewTasks(self):
         for id, task in self.taskList.items():
-            print('--- Tasks ---')
             print (f'{id}.\tTask Name: {task.getName()}')
             print (f'\tDescription: {task.getDescription()}')
             print (f'\tDue Date: {task.getDueDate()}')
             print (f'\tPriority: {task.getPriority()}')
+            
+        return True
+            
      
     #Update the attributes of the objects in the dictionary.
     #Args: idToUpdate: ID of the task that must be updated 
     #      attributeToUpdate: Attribute to be updated       
     #      newValue: New value for the attribute.         
     def UpdateTask(self, idToUpdate, attributeToUpdate, newValue):
-        for id, task in self.items():
+        for id, task in self.taskList.items():
             if idToUpdate == id:
                 match attributeToUpdate:
                     case 1:
@@ -35,7 +37,7 @@ class TaskManager():
                     case 3:
                         task.setDueDate(newValue)
                     case 4:
-                        task.getPriority(newValue)
+                        task.setPriority(newValue)
 
     #Delete the objects in the dictionary.
     #Args: idToUpdate: ID of the task that must be deleted

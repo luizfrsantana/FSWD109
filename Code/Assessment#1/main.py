@@ -25,21 +25,34 @@ while userChoice != 5:
             taskDescription = input('Enter task description: ') 
             taskDueData = input('Enter due date: ') 
             taskPriority = input('Enter priority (High/Medium/Low): ') 
-            taskManager_1.AddTask(Task(taskName,taskDescription,taskDueData,taskPriority)) 
+            taskManager_1.AddTask(Task(taskName,taskDescription,taskDueData,taskPriority))
+            
+            print('Task Added successfully!')
             space()          
         case 2:
+            print('--- Tasks ---')
             taskManager_1.ViewTasks()
             space()       
         case 3:
-            pass   
+            idToUpdate = int(input('Enter task ID to update: '))
+            print('Enter the number corresponding to the attribute to be updated:')
+            print('1 - Name / 2 - Description / 3 - Due date / 4 - Priority')
+            attributeToUpdate = int(input('Enter the number: '))
+            newValue = input('Enter new Value: ')
+            taskManager_1.UpdateTask(idToUpdate, attributeToUpdate, newValue) 
+            
+            print('Task updated successfully!')
+            space()    
         case 4:
-            pass   
+            taskManager_1.DeleteTask(int(input('Enter task ID to delete: ')))
+            print('Task deleted successfully!')
+            space() 
         case 5:
-            pass   
+            pass
         case _:
             print('Invalid Choice!')
     userChoice = userChoiceFunction()
-    
-print('Exiting Task Manager. Goodbye!')
+
+print('Exiting Task Manager. Goodbye!') 
         
     
