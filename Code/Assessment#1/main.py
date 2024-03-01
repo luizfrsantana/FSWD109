@@ -2,51 +2,60 @@ from Task import Task
 from TaskManager import TaskManager
 
 taskManager_1 = TaskManager()
-def space():
+
+
+def skipTwoLines():
     print('')
     print('')
-    
+
+#Function to be used when it's necessary to get the user option from the list     
 def userChoiceFunction():
     return int(input('Enter your choice: '))
     
 print('Welcome to Task Manager')
-space()
+skipTwoLines()
 print('1. Add Task')
 print('2. View Task')
 print('3. Update Task')
 print('4. Delete Task')
 print('5. Exit Task')
-space()   
+skipTwoLines()
+   
 userChoice = userChoiceFunction()
 while userChoice != 5:
     match userChoice:
         case 1:
             taskName = input('Enter task name: ')
             taskDescription = input('Enter task description: ') 
-            taskDueData = input('Enter due date: ') 
+            taskDueData = input('Enter due date (YYYY-MM-DD): ') 
             taskPriority = input('Enter priority (High/Medium/Low): ') 
-            taskManager_1.AddTask(Task(taskName,taskDescription,taskDueData,taskPriority))
-            
-            print('Task Added successfully!')
-            space()          
+            #Add a new object to the existing dictionary.
+            taskManager_1.AddTask(taskName,taskDescription,taskDueData,taskPriority) 
+            skipTwoLines()          
         case 2:
             print('--- Tasks ---')
             taskManager_1.ViewTasks()
-            space()       
+            skipTwoLines()       
         case 3:
-            idToUpdate = int(input('Enter task ID to update: '))
-            print('Enter the number corresponding to the attribute to be updated:')
-            print('1 - Name / 2 - Description / 3 - Due date / 4 - Priority')
-            attributeToUpdate = int(input('Enter the number: '))
-            newValue = input('Enter new Value: ')
-            taskManager_1.UpdateTask(idToUpdate, attributeToUpdate, newValue) 
+            if taskManager_1.IsTaskListEmpty():
+                idToUpdate = int(input('Enter task ID to update: '))
+                print('Enter the number corresponding to the attribute to be updated:')
+                print('1 - Name / 2 - Description / 3 - Due date / 4 - Priority')
+                attributeToUpdate = int(input('Enter the number: '))
+                newValue = input('Enter new Value: ')
+                taskManager_1.UpdateTask(idToUpdate, attributeToUpdate, newValue)
+            else:
+                print('There is no task to update.') 
             
-            print('Task updated successfully!')
-            space()    
+            skipTwoLines()    
         case 4:
-            taskManager_1.DeleteTask(int(input('Enter task ID to delete: ')))
-            print('Task deleted successfully!')
-            space() 
+            if taskManager_1.IsTaskListEmpty():
+                taskManager_1.DeleteTask(int(input('Enter task ID to delete: ')))
+                print('Task deleted successfully!') 
+            else:
+                print('There is no task to delete.')
+                
+            skipTwoLines() 
         case 5:
             pass
         case _:

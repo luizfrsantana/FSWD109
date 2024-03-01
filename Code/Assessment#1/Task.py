@@ -1,17 +1,19 @@
+from datetime import datetime
+
 class Task():
     
     #Attributes
     name = ''
     description = ''
-    dueDate = '2020-02-28'
+    dueDate = datetime.strptime('2020-10-02', "%Y-%m-%d") 
     priority = ''
     
     #constructor
     def __init__(self,name,description,dueDate,priority):
-        self.name = name
-        self.description = description
-        self.dueDate = dueDate 
-        self.priority = priority
+        self.setName(name)
+        self.setDescription(description)
+        self.setDueDate(dueDate) 
+        self.setPriority(priority)
      
     #Methods to get attributes information    
     def getName(self):
@@ -19,7 +21,7 @@ class Task():
     def getDescription(self):
         return self.description
     def getDueDate(self):
-        return self.dueDate
+        return self.dueDate.strftime("%Y-%m-%d")
     def getPriority(self):
         return self.priority
     
@@ -29,6 +31,6 @@ class Task():
     def setDescription(self, description):
         self.description = description
     def setDueDate(self, dueDate):
-        self.dueDate = dueDate
+        self.dueDate = datetime.strptime(dueDate, "%Y-%m-%d") 
     def setPriority(self, priority):
         self.priority = priority
