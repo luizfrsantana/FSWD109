@@ -45,7 +45,11 @@ class TaskManager():
                             task.setDueDate(newValue)
                         case 4:
                             task.setPriority(newValue)
+                        case _:
+                            raise IndexError
             print('Task updated successfully!')
+        except IndexError:
+            print('Number corresponding to the attribute not valid!') 
         except ValueError:
             print('Type of data entered not accepted by the application!')
         except:
@@ -55,9 +59,15 @@ class TaskManager():
     #Args: idToDelete: ID of the task that must be deleted
     def DeleteTask(self, idToDelete):
         self.taskList.pop(idToDelete)
-        
+
+    #Verify if the task dictionary is empty.
     def IsTaskListEmpty(self):
-        return bool(self.taskList)    
+        return bool(self.taskList) 
+    
+    #Verify if the task is in the dictionary.  
+    def IsTaskInDictionary(self, idToVerify):
+        if int(idToVerify) in self.taskList: return True
+        else: return False  
     
         
 
