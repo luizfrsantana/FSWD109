@@ -7,7 +7,7 @@ class TaskManager():
     def __init__(self):
         self.taskList = {}
     
-    #Add a new object task in the list of objects
+    #Add a new object task in the dictonary of objects
     #Args: task: Object that will be added to the dictonary 
     def AddTask(self, taskName,taskDescription,taskDueData,taskPriority):
         try:
