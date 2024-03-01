@@ -13,7 +13,8 @@ class TaskManager():
         
     #List the attributes of the objects in the dictionary.
     def ViewTasks(self):
-        for id, task in self.items():
+        for id, task in self.taskList.items():
+            print('--- Tasks ---')
             print (f'{id}.\tTask Name: {task.getName()}')
             print (f'\tDescription: {task.getDescription()}')
             print (f'\tDue Date: {task.getDueDate()}')
